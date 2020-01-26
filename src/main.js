@@ -18,9 +18,15 @@ var store = new Vuex.Store({
     // 注意1： 如果要操作 store 中的 state 值，只能通过 调用 mutations 提供的方法，才能操作对应的数据，不推荐直接操作 state 中的数据，因为 万一导致了数据的紊乱，不能快速定位到错误的原因，因为，每个组件都可能有操作数据的方法；
     // 注意2： 如果组件想要调用 mutations 中的方法，只能使用 this.$store.commit('方法名')
     // 这种 调用 mutations 方法的格式，和 this.$emit('父组件中方法名')
-    increment (state) {
+    increment (state) { // 加法功能
       state.count++
     },
+    subtract (state, obj) { // 减法功能
+      // 注意： mutations 的 函数参数列表中，最多支持两个参数，其中，参数1： 是 state 状态； 参数2： 通过 commit 提交过来的参数；
+      console.log(obj)
+      state.count -= (obj.c + obj.d)
+    }
+  }
     
 })
 

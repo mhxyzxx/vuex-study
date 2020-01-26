@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="button" value="减少">
+    <input type="button" value="减少" @click="remove">
     <input type="button" value="增加" @click="add">
     <br>
     <input type="text" v-model="$store.state.count">
@@ -22,6 +22,9 @@ export default {
       // 这几个组件，太麻烦。所以，我们通过vuex一个托管员来去修改state的数据，出现问题，有托管员去管理，定位找问题
       // this.$store.state.count++;
       this.$store.commit("increment");
+    },
+    remove() {
+      this.$store.commit("subtract", { c: 3, d: 1 });
     }
   }
 }
