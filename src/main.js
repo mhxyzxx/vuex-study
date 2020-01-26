@@ -13,7 +13,15 @@ var store = new Vuex.Store({
     // 大家可以把 state 想象成 组件中的 data ,专门用来存储数据的
     // 如果在 组件中，想要访问，store 中的数据，只能通过 this.$store.state.*** 来访问
     count: 0
-  }
+  },
+  mutations: {
+    // 注意1： 如果要操作 store 中的 state 值，只能通过 调用 mutations 提供的方法，才能操作对应的数据，不推荐直接操作 state 中的数据，因为 万一导致了数据的紊乱，不能快速定位到错误的原因，因为，每个组件都可能有操作数据的方法；
+    // 注意2： 如果组件想要调用 mutations 中的方法，只能使用 this.$store.commit('方法名')
+    // 这种 调用 mutations 方法的格式，和 this.$emit('父组件中方法名')
+    increment (state) {
+      state.count++
+    },
+    
 })
 
 const vm = new Vue({
